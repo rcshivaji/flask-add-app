@@ -5,6 +5,9 @@ app = Flask(__name__)
 def add_numbers(a, b):
     return a + b
 
+def subtract_numbers(a,b):
+    return a-b
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -12,10 +15,12 @@ def index():
         num1 = float(request.form["num1"])
         num2 = float(request.form["num2"])
         result = add_numbers(num1, num2)
+        result2 = subtract_numbers(num1, num2)
         return render_template(
             "result.html",
             num1=num1,
             num2=num2,
-            result=result
+            result=result,
+            result2=result2
         )
     return render_template("index.html")
